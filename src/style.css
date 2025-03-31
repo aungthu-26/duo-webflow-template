@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .padding {
+        @apply xl:px-20 lg:px-16 md:px-10 px-5;
+    }
+
+    .btn {
+        @apply bg-own-primary px-4 py-[6px] text-white font-semibold rounded-md;
+    }
+
+    .outline-btn {
+        @apply border-[2px] border-own-primary px-4 py-[6px] text-own-primary font-semibold rounded-md;
+    }
+
+    .card-hover {
+        @apply hover:border-own-primary transition-all;
+    }
+
+    .section-heading {
+        @apply md:text-4xl text-3xl md:font-bold font-semibold;
+    }
+
+    .section-description {
+        @apply xl:w-[40%] lg:w-[60%] md:w-[70%] w-full mt-2;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.hero-bg-image {
+    background-position: -5% 100%;
+}
+
+#process, #integrations, #pricing, #faq, #reviews {
+    scroll-margin-top: 150px; /* Adjust based on your header height */
+}
