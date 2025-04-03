@@ -802,7 +802,7 @@
           <h1 class="font-bold text-lg">Contact</h1>
           <ul class="mt-3 flex flex-col gap-3">
             <li>Email me</li>
-            <li>+67 24 24 12 45</li>
+            <li>+959 969 253 847</li>
           </ul>
         </div>
         <div>
