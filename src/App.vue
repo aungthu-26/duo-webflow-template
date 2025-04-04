@@ -1,41 +1,91 @@
+<script setup>
+import { ref } from 'vue'
+
+const isMenuOpen = ref(false);
+
+function toggleMenu() {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const handleMenuClick = () => {
+  isMenuOpen.value = false // Close menu when clicking an item
+}
+
+</script>
+
 <template>
   <div>
     <!-- nav bar -->
     <div
-      class="fixed top-0 left-0 right-0 bg-scroll bg-[#EEEEEE] z-50 border-b-2 padding py-6 border-border-color flex items-center justify-between"
-    >
-      <div class="w-[80px]">
-        <a href="#">
-          <img
-            src="https://cdn.prod.website-files.com/6627e9a3eba2a9009dbdeffe/6628074b71d6e1e95593d310_Logo.svg"
-            alt="logo"
-          />
-        </a>
-      </div>
-      <div class="flex items-center gap-6">
-        <ul class="lg:flex hidden items-center gap-6 text-lg font-medium">
-          <li><a href="#process">Process</a></li>
-          <li><a href="#integrations">Integrations</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-        <button class="btn lg:flex hidden">Buy Template</button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="40"
-          class="lg:hidden block"
-          viewBox="0 0 24 24"
-        >
-          <!-- Icon from All by undefined - undefined -->
-          <path
-            fill="currentColor"
-            d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"
-          />
-        </svg>
-      </div>
+    class="fixed top-0 left-0 right-0 bg-[#EEEEEE] z-50 border-b-2 border-border-color padding py-6  flex items-center justify-between"
+  >
+    <!-- Logo -->
+    <div class="w-[80px]">
+      <a href="#">
+        <img
+          src="https://cdn.prod.website-files.com/6627e9a3eba2a9009dbdeffe/6628074b71d6e1e95593d310_Logo.svg"
+          alt="logo"
+        />
+      </a>
     </div>
+
+    <!-- Desktop Menu -->
+    <div class="lg:flex hidden items-center gap-6">
+      <ul class="flex items-center gap-6 text-lg font-medium">
+        <li><a href="#process">Process</a></li>
+        <li><a href="#integrations">Integrations</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+      <button class="btn lg:flex hidden">Buy Template</button>
+    </div>
+
+    <!-- Hamburger / Close Icon -->
+    <button @click="toggleMenu" class="lg:hidden block">
+      <svg
+        v-if="!isMenuOpen"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"
+        />
+      </svg>
+      <svg
+        v-else
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 1 0-1.41 1.41L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    v-if="isMenuOpen"
+     class="lg:hidden z-50 fixed bg-[#202831] w-full md:h-auto sm:h-full top-[80px] left-0 right-0 shadow-lg p-6"
+  >
+    <ul class="flex flex-col  md:gap-6 gap-4 md:py-8 py-6 text-4xl  font-semibold text-own-primary ">
+      <li><a href="#process" @click="handleMenuClick">Process</a></li>
+      <li><a href="#integrations" @click="handleMenuClick">Integrations</a></li>
+      <li><a href="#pricing" @click="handleMenuClick">Pricing</a></li>
+      <li><a href="#faq" @click="handleMenuClick">FAQ</a></li>
+      <li><a href="#reviews" @click="handleMenuClick">Reviews</a></li>
+    </ul>
+    <!--divider-->
+    <div class="border-t-2 border-[#464D54] md:my-6 my-4"></div>
+    <button class="outline-btn mt-4 bg-white">Learn More</button>
+  </div>
 
     <!-- Startups section -->
     <div
